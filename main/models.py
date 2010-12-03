@@ -2,6 +2,7 @@ from django.db import models
 
 class Client(models.Model):
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=50, unique=True)
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
@@ -10,11 +11,15 @@ class Client(models.Model):
 class Project(models.Model):
     client = models.ForeignKey(Client)
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=50, unique=True)
     description = models.TextField(blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return "%s (%s)" % (self.name, self.client.name)
+
+    def get_absolute_url(self):
+        return "/%s/%s/" % (self.client.slug, self.slug)
 
 class Page(models.Model):
     project = models.ForeignKey(Project)
