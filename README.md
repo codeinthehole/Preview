@@ -17,4 +17,7 @@ Set up a folder and virtual env:
 Install all dependencies
     pip install -r requirements.txt
 
+Create a local_settings.py file which contains your database credentials.  This file is on the .gitignore list
+and so needs creating manually
+
 Off you go...
