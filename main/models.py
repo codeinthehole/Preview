@@ -30,6 +30,9 @@ class Page(models.Model):
     def __unicode__(self):
         return "%s (%s / %s)" % (self.name, self.project.client.name, self.project.name) 
 
+    def get_versions(self):
+        return self.pageversion_set.all()
+
 class PageVersion(models.Model):
     STATUS_CHOICES = (
         ('Open', 'Under review'),

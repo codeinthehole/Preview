@@ -1,0 +1,19 @@
+All done as stories:
+
+Users:
+- integrate with django.auth
+- projects can be configured so that only certain users can see them
+- a user will get an email alert when new designs are added to one of their projects
+- a logged in user can leave feedback on each version of a design
+- an anonymous user can leave feedback on each version of a design, but must enter a name
+- the uploader of an image will be recorded
+
+Pages:
+- feedback/comments on a page will notify the uploader
+- when a new version is uploaded, a diff is done to make sure the image files are different
+- a user can view all versions of an image
+
+Project creation:
+- a project can be created by selecting a client and uploading a ZIP file of images
+- a project can be created using manage.py, which will prompt for a client name and the path to a folder of images
+

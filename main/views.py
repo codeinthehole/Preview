@@ -13,4 +13,4 @@ def project(request, client_slug, project_slug):
         raise Http404
     pages = Page.objects.filter(project=project)
 
-    return render_to_response('project.html', {'pages': pages})
+    return render_to_response('main/project.html', {'pages': pages})
