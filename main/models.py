@@ -25,7 +25,11 @@ class Page(models.Model):
     project = models.ForeignKey(Project)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
+    display_order = models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-display_order',)
 
     def __unicode__(self):
         return "%s (%s / %s)" % (self.name, self.project.client.name, self.project.name) 

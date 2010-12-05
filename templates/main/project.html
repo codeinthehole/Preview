@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Tangent One / Preview</title>
+        <title>Tangent One / Preview / {{ client.name }} / {{ project.name }}</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
         <script type="text/javascript" src="/site_media/js/main.js"></script>
@@ -33,7 +33,7 @@
 			<img src="/site_media/images/loader.gif" alt="Preview image" />
 		</div>
         <div id="nav">
-			<h1>Tangent One / Preview</h1>
+            <h1>{{ client.name }} / {{ project.name }}</h1>
 			<ul>
 			{% for page in pages %}
 			    <li>Page: {{ page.name }} (Versions: 
@@ -44,6 +44,9 @@
 				</li>
 			{% endfor %}
 			</ul>
+            <p>
+                <a href="#" id="nav_prev">Previous</a> | <a href="#" id="nav_next">Next</a>
+            </p>
 		</div>
 	</body>
 </html>
