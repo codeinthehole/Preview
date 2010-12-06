@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^projects/', include('main.urls'),
+    url(r'^projects/', include('main.urls')),
 )
 
 if settings.DEBUG:
