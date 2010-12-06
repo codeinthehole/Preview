@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.client import Client
 
 class ViewsTest(TestCase):
-    fixtures = ['test_main.json']
+    fixtures = ['test_data.json']
     def setUp(self):
         client = Client()
     def test_for_project_page(self):
