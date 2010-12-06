@@ -11,8 +11,7 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'(?P<client_slug>[\w-]*)/(?P<project_slug>[\w-]*)/', 'main.views.project',
-            name='main-project'),
+    url(r'^projects/', include('main.urls'),
 )
 
 if settings.DEBUG:
