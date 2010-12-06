@@ -10,12 +10,13 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    (r'^admin/', include(admin.site.urls)),
-    (r'(?P<client_slug>[\w-]*)/(?P<project_slug>[\w-]*)/', 'main.views.project'),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'(?P<client_slug>[\w-]*)/(?P<project_slug>[\w-]*)/', 'main.views.project',
+            name='main-project'),
 )
 
 if settings.DEBUG:
     urlpatterns += patterns('django.views.static',
-        (r'^media/(?P<path>.*)$', 'serve', 
+        url(r'^media/(?P<path>.*)$', 'serve', 
             {'document_root': settings.MEDIA_ROOT}),
     )
