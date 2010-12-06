@@ -11,7 +11,7 @@
             'description': '{{ page.description|escapejs }}',
         };
         versions = [];
-        {% for version in page.pageversion_set.all %}
+        {% for version in page.versions.all %}
         versions.push({
             'url': '{{ version.image.url|escapejs }}',
             'number': '{{ version.number|escapejs }}'

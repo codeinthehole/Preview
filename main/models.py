@@ -12,7 +12,7 @@ class Client(models.Model):
 
 
 class Project(models.Model):
-    client = models.ForeignKey('main.Client')
+    client = models.ForeignKey('main.Client', related_name="projects")
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=50, unique=True)
     description = models.TextField(blank=True)
@@ -27,7 +27,7 @@ class Project(models.Model):
 
 
 class Page(models.Model):
-    project = models.ForeignKey('main.Project')
+    project = models.ForeignKey('main.Project', related_name="pages")
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     display_order = models.IntegerField(default=0)
@@ -48,7 +48,7 @@ class PageVersion(models.Model):
         (APPROVED, _("Approved")),
         (REJECTED, _("Rejected")),
     )
-    page = models.ForeignKey('main.Page')
+    page = models.ForeignKey('main.Page', related_name="versions")
     number = models.IntegerField(default=1)
     image = models.ImageField(upload_to='designs/%Y/%m/%d')
     status = models.IntegerField(default=OPEN, choices=STATUS_CHOICES)
