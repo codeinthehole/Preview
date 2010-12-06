@@ -21,7 +21,8 @@ Create a local_settings.py file which contains your database credentials.  This 
 and so needs creating manually
 
 Load the test data using:
-    ./manage.py loaddata main/fixtures/test_data.json
+    ./manage.py loaddata main/fixtures/test_auth.json
+    ./manage.py loaddata main/fixtures/test_main.json
 Note that there is a set of fixture images in assets/design-fixtures/ that go with the fixture data.
 
 There is a single user with username "admin" and password "testing" in the fixture data.

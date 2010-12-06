@@ -21,7 +21,6 @@ var main = {
     },
     displayImage: function(src) {
         window.scrollTo(0, 0);
-        if (console) console.log("Showing "+src);
         $('#preview-image img').attr('src', src);
     },
     displayNextImage: function(event) {

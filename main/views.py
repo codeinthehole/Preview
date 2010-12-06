@@ -17,3 +17,11 @@ def project(request, client_slug, project_slug):
         'pages': pages,
         'client': client,
         'project': project,}, context_instance=RequestContext(request))
+
+def client(request, client_slug):
+    """Shows all projects that belong to a client"""
+    return render_to_response('main/client.html', {
+        'client': get_object_or_404(Client, slug=client_slug)
+        }, context_instance=RequestContext(request))
+
+
