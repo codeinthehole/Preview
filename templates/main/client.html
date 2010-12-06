@@ -1,7 +1,7 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-<h1>{{ client.name }}</h1>
+<h1>All clients</h1>
 <p>Please select from the following projects:</p>
 <ul>
     {% for project in client.projects.all %}

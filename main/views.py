@@ -23,5 +23,6 @@ def client(request, client_slug):
     return render_to_response('main/client.html', {
         'client': get_object_or_404(Client, slug=client_slug)
         }, context_instance=RequestContext(request))
+    
 
 

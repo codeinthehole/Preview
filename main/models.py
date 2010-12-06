@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User 
 from django.utils.translation import ugettext as _
 
 
@@ -53,7 +54,9 @@ class PageVersion(models.Model):
     image = models.ImageField(upload_to='designs/%Y/%m/%d')
     status = models.IntegerField(default=OPEN, choices=STATUS_CHOICES)
     created_date = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User, related_name="created_pageversions")
     approval_date = models.DateTimeField(null=True, blank=True)
+    approved_by = models.ForeignKey(User, null=True, blank=True, related_name="approved_pageversions")
 
     def __unicode__(self):
         return u"Version #%d of '%s' (%s / %s)" % (self.number, self.page.name, 
