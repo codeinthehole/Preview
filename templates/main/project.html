@@ -6,21 +6,21 @@
         var pages = [];
         var page = {}, versions = [];
         {% for page in pages %}
-        page = {
-            'name': '{{ page.name|escapejs }}',
-            'description': '{{ page.description|escapejs }}',
-        };
-        versions = [];
-        {% for version in page.versions.all %}
-        versions.push({
-            'url': '{{ version.image.url|escapejs }}',
-            'number': '{{ version.number|escapejs }}'
-        });
+            page = {
+                'name': '{{ page.name|escapejs }}',
+                'description': '{{ page.description|escapejs }}',
+            };
+            versions = [];
+            {% for version in page.versions.all %}
+                versions.push({
+                    'url': '{{ version.image.url|escapejs }}',
+                    'number': '{{ version.number|escapejs }}'
+                });
+            {% endfor %}
+            page['versions'] = versions;
+            pages.push(page);
         {% endfor %}
-        page['versions'] = versions;
-        pages.push(page);
     </script>
-    {% endfor %}
 {% endblock %}
 
 {% block content %}
@@ -32,7 +32,7 @@
         <ul>
         {% for page in pages %}
             <li>Page: {{ page.name }} (Versions: 
-            {% for version in page.get_versions %}
+            {% for version in page.versions.all %}
             <a href="{{ version.image.url }}" class="page_version">{{ version.number }}</a>{% if not forlooplast %},{% endif %}
             {% endfor %}
             )

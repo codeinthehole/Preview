@@ -16,4 +16,4 @@ def project(request, client_slug, project_slug):
     return render_to_response('main/project.html', {
         'pages': pages,
         'client': client,
-        'project': project})
+        'project': project,}, context_instance=RequestContext(request))
