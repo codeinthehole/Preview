@@ -1,5 +1,5 @@
 *.pyc
 local_settings.py
 fixtures/*
-assets/*
+assets/designs/*
 *.swp

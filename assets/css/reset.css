@@ -1,0 +1,56 @@
+/*
+ * Browser_reset.css
+ * Author: David Winterbottom (David -DOT- Winterbottom -AT- gmail -DOT- com)
+ */
+
+/* Global settings */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+}
+
+/* Tables, forms and images */
+table {
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse; 
+	border-spacing: 0;
+	vertical-align: top;
+}
+fieldset {
+	border: 0;
+}
+form {
+	padding: 0;
+	margin: 0;
+}
+img {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+/* Typography */
+h1,h2,h3,h4,h5,h6 { 
+	font-size: 100%; 
+	font-weight: normal; 
+} 
+address,caption,cite,code,dfn,th,var { 
+	font-style: normal; 
+	font-weight: normal; 
+} 
+ol,ul { 
+   list-style:none; 
+} 
+caption,th { 
+   text-align: left; 
+} 
+abbr,acronym { 
+	border:0; 
+} 

@@ -1,0 +1,33 @@
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	color: #444;
+	background-color: #EBE8E3;
+}
+h1 {
+    font-weight: bold;
+}
+
+#preview-image {
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1;
+}
+#preview-image img {
+    border: 1px solid #aaa;
+}
+
+#nav {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #aaa;
+    padding: 4px;
+}

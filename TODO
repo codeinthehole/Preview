@@ -1,5 +1,10 @@
 All done as stories:
 
+Misc:
+- set up fixture file of dummy project
+- set up image fixtures
+- client tests based on fixture data
+
 Users:
 - integrate with django.auth
 - projects can be configured so that only certain users can see them
