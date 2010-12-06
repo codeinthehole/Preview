@@ -1,52 +1,46 @@
-<html>
-	<head>
-        <title>Tangent One / Preview / {{ client.name }} / {{ project.name }}</title>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-        <script type="text/javascript" src="/site_media/js/main.js"></script>
-		<link rel="stylesheet" type="text/css" href="/site_media/css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="/site_media/css/main.css" />
+{% extends "main/base.html" %}
 
-		<!-- Set up JS variables -->
-		<script type="text/javascript">
-			var pages = [];
-			var page = {}, versions = [];
-			{% for page in pages %}
-			page = {
-				'name': '{{ page.name|escapejs }}',
-				'description': '{{ page.description|escapejs }}',
-			};
-            versions = [];
+{% block extra_head %}
+    <!-- Set up JS variables -->
+    <script type="text/javascript">
+        var pages = [];
+        var page = {}, versions = [];
+        {% for page in pages %}
+        page = {
+            'name': '{{ page.name|escapejs }}',
+            'description': '{{ page.description|escapejs }}',
+        };
+        versions = [];
+        {% for version in page.get_versions %}
+        versions.push({
+            'url': '{{ version.image.url|escapejs }}',
+            'number': '{{ version.number|escapejs }}'
+        });
+        {% endfor %}
+        page['versions'] = versions;
+        pages.push(page);
+    </script>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <div id="preview-image">
+        <img src="/site_media/images/loader.gif" alt="Preview image" />
+    </div>
+    <div id="nav">
+        <h1>{{ client.name }} / {{ project.name }}</h1>
+        <ul>
+        {% for page in pages %}
+            <li>Page: {{ page.name }} (Versions: 
             {% for version in page.get_versions %}
-			versions.push({
-				'url': '{{ version.image.url|escapejs }}',
-				'number': '{{ version.number|escapejs }}'
-			});
-			{% endfor %}
-            page['versions'] = versions;
-			pages.push(page);
-			{% endfor %}
-		</script>
-	</head>
-	<body>
-        <div id="preview-image">
-			<img src="/site_media/images/loader.gif" alt="Preview image" />
-		</div>
-        <div id="nav">
-            <h1>{{ client.name }} / {{ project.name }}</h1>
-			<ul>
-			{% for page in pages %}
-			    <li>Page: {{ page.name }} (Versions: 
-				{% for version in page.get_versions %}
-				<a href="{{ version.image.url }}" class="page_version">{{ version.number }}</a>{% if not forlooplast %},{% endif %}
-				{% endfor %}
-				)
-				</li>
-			{% endfor %}
-			</ul>
-            <p>
-                <a href="#" id="nav_prev">Previous</a> | <a href="#" id="nav_next">Next</a>
-            </p>
-		</div>
-	</body>
-</html>
+            <a href="{{ version.image.url }}" class="page_version">{{ version.number }}</a>{% if not forlooplast %},{% endif %}
+            {% endfor %}
+            )
+            </li>
+        {% endfor %}
+        </ul>
+        <p>
+            <a href="#" id="nav_prev">Previous</a> | <a href="#" id="nav_next">Next</a>
+        </p>
+    </div>
+{% endblock %}

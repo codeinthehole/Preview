@@ -4,3 +4,4 @@ PIL==1.1.7
 South==0.7.3
 wsgiref==0.1.2
 yolk==0.4.1
+django_extensions==0.5
