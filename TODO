@@ -1,17 +1,15 @@
-All done as stories:
+All done as stories (no particular order):
 
 Misc:
-- set up fixture file of dummy project
-- set up image fixtures
 - client tests based on fixture data
 
 Users:
-- integrate with django.auth
 - projects can be configured so that only certain users can see them
 - a user will get an email alert when new designs are added to one of their projects
-- a logged in user can leave feedback on each version of a design
+- a logged in user can leave feedback on each version of a design (use django comments)
 - an anonymous user can leave feedback on each version of a design, but must enter a name
-- the uploader of an image will be recorded
+- users can be assigned the ability to "approve" a page design
+- the approver and approval date will be recorded
 
 Pages:
 - feedback/comments on a page will notify the uploader
