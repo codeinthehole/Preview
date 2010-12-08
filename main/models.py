@@ -60,6 +60,7 @@ class PageVersion(models.Model):
             related_name="approved_pageversions")
 
     def __unicode__(self):
-        return u"Version #%d of '%s' (%s / %s)" % 
-            (self.number, self.page.name, self.page.project.client.name, 
-                    self.page.project.name)
+        return u"Version #%d of '%s' (%s / %s)" % (self.number, 
+                                                   self.page.name, 
+                                                   self.page.project.client.name, 
+                                                   self.page.project.name)
