@@ -31,9 +31,9 @@
         <h1>{{ client.name }} / {{ project.name }}</h1>
         <ul>
         {% for page in pages %}
-            <li>Page: {{ page.name }} (Versions: 
+            <li>Page: <span class="page_name" id="{{ page.name|slugify }}">{{ page.name }}</span> (Versions: 
             {% for version in page.versions.all %}
-            <a href="{{ version.image.url }}" class="page_version">{{ version.number }}</a>{% if not forlooplast %},{% endif %}
+            <a href="{{ version.image.url }}" id="{{ page.name|slugify }}_{{ version.number }}" class="page_version">{{ version.number }}</a>{% if not forlooplast %},{% endif %}
             {% endfor %}
             )
             </li>
