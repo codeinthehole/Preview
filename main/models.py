@@ -1,5 +1,5 @@
+from django.contrib.auth.models import User
 from django.db import models
-from django.contrib.auth.models import User 
 from django.utils.translation import ugettext as _
 
 
@@ -38,8 +38,8 @@ class Page(models.Model):
         ordering = ('-display_order',)
 
     def __unicode__(self):
-        return u"%s (%s / %s)" % (self.name, self.project.client.name, 
-                                        self.project.name) 
+        return u"%s (%s / %s)" % (self.name, self.project.client.name,
+                                        self.project.name)
 
 
 class PageVersion(models.Model):
@@ -56,9 +56,10 @@ class PageVersion(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, related_name="created_pageversions")
     approval_date = models.DateTimeField(null=True, blank=True)
-    approved_by = models.ForeignKey(User, null=True, blank=True, related_name="approved_pageversions")
+    approved_by = models.ForeignKey(User, null=True, blank=True, 
+            related_name="approved_pageversions")
 
     def __unicode__(self):
-        return u"Version #%d of '%s' (%s / %s)" % (self.number, self.page.name, 
-                                                   self.page.project.client.name, 
-                                                   self.page.project.name) 
+        return u"Version #%d of '%s' (%s / %s)" % 
+            (self.number, self.page.name, self.page.project.client.name, 
+                    self.page.project.name)
