@@ -12,6 +12,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^projects/', include('main.urls')),
+    url(r'^comments/', include('django.contrib.comments.urls')),
 )
 
 if settings.DEBUG:

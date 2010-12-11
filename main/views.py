@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from main.models import *
 
 def project(request, client_slug, project_slug):
-
+    """Show versions for a project"""
     client = get_object_or_404(Client, slug=client_slug)
     project = get_object_or_404(Project, slug=project_slug)
     if project.client != client:
@@ -17,6 +17,18 @@ def project(request, client_slug, project_slug):
         'pages': pages,
         'client': client,
         'project': project,}, context_instance=RequestContext(request))
+
+def page_version_comments(request, client_slug, project_slug, page_slug, version_no):
+    """Show comments for a version of a page"""
+    client = get_object_or_404(Client, slug=client_slug)
+    project = get_object_or_404(Project, slug=project_slug)
+    page = get_object_or_404(Page, slug=page_slug)
+    if project.client != client and page.project != project:
+        raise Http404
+    page_version = get_object_or_404(PageVersion, page=page, number=version_no)
+
+    return render_to_response('main/page_comments.html', locals(),
+	 context_instance=RequestContext(request))
 
 def client(request, client_slug):
     """Shows all projects that belong to a client"""
