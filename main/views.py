@@ -2,6 +2,7 @@ from django.conf import settings
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import Context, loader, RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
+from django.core.urlresolvers import reverse
 
 from main.models import *
 
@@ -26,7 +27,7 @@ def page_version_comments(request, client_slug, project_slug, page_slug, version
     if project.client != client and page.project != project:
         raise Http404
     page_version = get_object_or_404(PageVersion, page=page, number=version_no)
-
+    next = reverse(page_version_comments, args=[client.slug, project.slug, page.slug, page_version.number])
     return render_to_response('main/page_comments.html', locals(),
 	 context_instance=RequestContext(request))
 
