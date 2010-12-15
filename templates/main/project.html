@@ -24,6 +24,7 @@
 {% endblock %}
 
 {% block content %}
+  {% load comments %}
     <div id="preview-image">
         <img src="/site_media/images/loader.gif" alt="Preview image" />
     </div>
@@ -31,9 +32,11 @@
         <h1>{{ client.name }} / {{ project.name }}</h1>
         <ul>
         {% for page in pages %}
-            <li>Page: <span class="page_name" id="{{ page.name|slugify }}">{{ page.name }}</span> (Versions: 
+            <li>Page: <span class="page_name" id="{{ page.slug }}">{{ page.name }}</span> (Versions: 
             {% for version in page.versions.all %}
-            <a href="{{ version.image.url }}" id="{{ page.name|slugify }}_{{ version.number }}" class="page_version">{{ version.number }}</a>{% if not forloop.last %},{% endif %}
+            {% get_comment_count for version as comment_count %}
+            <a href="{{ version.image.url }}" id="{{ page.slug }}_{{ version.number }}" class="page_version">{{ version.number }}</a>
+	    <a href="{% url comments-page-project client_slug=client.slug project_slug=project.slug page_slug=page.slug version_no=version.number %}">({{ comment_count }})</a>{% if not forloop.last %},{% endif %}
             {% endfor %}
             )
             </li>
