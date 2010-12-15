@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+{% load comments %}
+
+{% block content %}
+    <h1>Client: <a href="{% url main-client client.slug %}">{{ client.name }}</a></h1>
+    <h2>Project: <a href="{% url main-client-project client.slug project.slug %}">{{ project.name }}</a></h2>
+    <h3>Page: <a href="{% url main-client-project-page client.slug project.slug page.slug %}">{{ page.name }}</a></h3>
+    
+    <p>This page has the following versions:</p>
+    <table>
+        <caption>Versions</caption>
+        <tr>
+            <th>Number</th>
+            <th>Number of comments</th>
+            <th>Status</th>
+            <th>Thumbnail</th>
+        </tr>
+        {% for version in page.versions.all %}
+        {% get_comment_count for version as comment_count %}
+        <tr>
+            <td>{{ version.number }}</td>
+            <td>{{ comment_count }}</td>
+            <td>{{ version.get_status_display }}</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+     
+{% endblock %}

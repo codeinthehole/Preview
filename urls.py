@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
+from django.views.generic.simple import redirect_to
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^projects/', include('main.urls')),
     url(r'^comments/', include('django.contrib.comments.urls')),
+    url(r'^$', redirect_to, {'url': '/projects/'}),
 )
 
 if settings.DEBUG:
