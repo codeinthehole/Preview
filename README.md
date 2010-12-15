@@ -34,3 +34,7 @@ There is a single user with username "admin" and password "testing" in the fixtu
 
 Run the tests with:
     ./manage.py test main
+If you need to alter the test fixture data, then get your local db in the state you want and run
+    ./manage.py dumpdata -e south > main/fixtures/test_data.json
+You don't want the south data in the fixture as that will prevent other users from applying the migrations
+when they set up their db.
