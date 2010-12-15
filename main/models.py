@@ -30,6 +30,7 @@ class Project(models.Model):
 class Page(models.Model):
     project = models.ForeignKey('main.Project', related_name="pages")
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=50, null=True, unique=True)
     description = models.TextField(blank=True)
     display_order = models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
