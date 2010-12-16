@@ -16,6 +16,10 @@ class Client(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Client, self).save(*args, **kwargs)
+        
+    @models.permalink
+    def get_absolute_url(self):
+        return ('main-client', [self.slug])
 
 
 class Project(models.Model):
@@ -35,7 +39,7 @@ class Project(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('main-project', [self.client.slug, self.slug])
+        return ('main-client-project', [self.client.slug, self.slug])
 
 
 class Page(models.Model):
@@ -52,6 +56,15 @@ class Page(models.Model):
     def __unicode__(self):
         return u"%s (%s / %s)" % (self.name, self.project.client.name,
                                         self.project.name)
+       
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(Page, self).save(*args, **kwargs)    
+        
+    @models.permalink
+    def get_absolute_url(self):
+        return ('main-client-project-page', [self.client.slug, self.slug])
 
 
 class PageVersion(models.Model):
@@ -66,7 +79,7 @@ class PageVersion(models.Model):
     image = models.ImageField(upload_to='designs/%Y/%m/%d')
     status = models.IntegerField(default=OPEN, choices=STATUS_CHOICES)
     created_date = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(User, related_name="created_pageversions")
+    created_by = models.ForeignKey(User, related_name="created_pageversions", null=True)
     approval_date = models.DateTimeField(null=True, blank=True)
     approved_by = models.ForeignKey(User, null=True, blank=True, 
             related_name="approved_pageversions")

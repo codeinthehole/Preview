@@ -5,7 +5,7 @@
 <p>Please select from the following projects:</p>
 <ul>
     {% for project in client.projects.all %}
-    <li><a href="{% url main-project client.slug project.slug %}">{{ project.name }}</a></li>
+    <li><a href="{% url main-client-project client.slug project.slug %}">{{ project.name }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
