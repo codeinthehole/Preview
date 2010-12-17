@@ -7,7 +7,7 @@
 	{% render_comment_list for page_version %}
 	{% render_comment_form for page_version %}
         <p>
-            <a href="{% url main-project client.slug project.slug%}" id="project_page_back">Go back to page display</a> 
+            <a href="{% url main-client-project client.slug project.slug%}" id="project_page_back">Go back to page display</a> 
         </p>
     </div>
 {% endblock %}
