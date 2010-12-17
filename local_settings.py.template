@@ -1,0 +1,15 @@
+# Django settings for preview project.
+import os
+PROJECT_DIR = os.path.dirname(__file__)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', 
+        'NAME': os.path.join(PROJECT_DIR, 'Preview.db'),                      
+        'USER': '',                     
+        'PASSWORD': '',                
+        'HOST': '',                   
+        'PORT': '',                  
+    }
+}
+
