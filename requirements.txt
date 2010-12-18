@@ -5,3 +5,4 @@ South==0.7.3
 wsgiref==0.1.2
 yolk==0.4.1
 django_extensions==0.5
+django-object-permissions==1.1

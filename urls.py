@@ -13,6 +13,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^projects/', include('main.urls')),
     url(r'^comments/', include('django.contrib.comments.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^permissions/', include('object_permissions.urls')),
     url(r'^$', redirect_to, {'url': '/projects/'}),
 )
 

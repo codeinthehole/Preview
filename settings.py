@@ -77,6 +77,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'object_permissions.backend.ObjectPermBackend',
+)
+
 ROOT_URLCONF = 'preview.urls'
 
 TEMPLATE_DIRS = (
@@ -96,6 +101,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django_extensions',
     'south',
+    'object_permissions',
     'main',
 )
 

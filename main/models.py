@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.template.defaultfilters import slugify
-
+from object_permissions import register
 
 class Client(models.Model):
     name = models.CharField(max_length=255)
@@ -21,6 +21,7 @@ class Client(models.Model):
     def get_absolute_url(self):
         return ('main-client', [self.slug])
 
+register(['view','comment','approve'], Client)
 
 class Project(models.Model):
     client = models.ForeignKey('main.Client', related_name="projects")
