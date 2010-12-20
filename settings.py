@@ -86,6 +86,11 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, "templates")
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'objperms.backend.ObjectPermBackend',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -97,6 +102,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'south',
     'main',
+    'objperms'
 )
 
 # Local overrides
